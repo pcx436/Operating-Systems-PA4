@@ -47,7 +47,7 @@ void pageit(Pentry q[MAXPROCESSES]) {
 
                     // find least recently used page to replace
                     for(pagetmp = 0; pagetmp < q[currentProc].npages; pagetmp++){
-                        // dont check the page we're trying to pagein
+                        // don't check the page we're trying to pagein
                         // also check that page @ pagetmp is paged in
                         if(pagetmp != desiredPage && q[currentProc].pages[pagetmp]){
                             currentTime = tick - timestamps[currentProc][pagetmp];
