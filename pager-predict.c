@@ -1,18 +1,3 @@
-/*
- * File: pager-predict.c
- * Author:       Andy Sayler
- *               http://www.andysayler.com
- * Adopted From: Dr. Alva Couch
- *               http://www.cs.tufts.edu/~couch/
- *
- * Project: CSCI 3753 Programming Assignment 4
- * Create Date: Unknown
- * Modify Date: 2012/04/03
- * Description:
- * 	This file contains a predictive pageit
- *      implmentation.
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 
