@@ -8,3 +8,5 @@ recitationNotes.md
 test-*
 
 *.o
+
+.idea
