@@ -50,10 +50,38 @@ void pageit(Pentry q[MAXPROCESSES]) {
         initialized = 1;
     }
 
-    /* TODO: Implement LRU Paging */
-    fprintf(stderr, "pager-lru not yet implemented. Exiting...\n");
-    exit(EXIT_FAILURE);
+    for(currentProc = 0; currentProc < MAXPROCESSES; currentProc ++){  // for every process
+        if(q[currentProc].active) {
+            pc = q[currentProc].pc;
+            desiredPage = (int)pc / PAGESIZE;
 
-    /* advance time for next pageit iteration */
-    tick++;
-} 
+            if(!q[currentProc].pages[desiredPage]){  // if page isn't in memory
+                if(!pagein(currentProc, desiredPage)) {  // attempt to add the page
+                    oldestPage = -1;
+                    oldestTime = -1;
+
+                    // find least recently used page to replace
+                    for(pagetmp = 0; pagetmp < q[currentProc].npages; pagetmp++){
+                        // dont check the page we're trying to pagein
+                        // also check that page @ pagetmp is paged in
+                        if(pagetmp != desiredPage && q[currentProc].pages[pagetmp]){
+                            currentTime = tick - timestamps[currentProc][pagetmp];
+
+                            if(currentTime > oldestTime){
+                                oldestPage = pagetmp;
+                                oldestTime = currentTime;
+                            }
+                        }
+                    }
+
+                    // remove oldest page from process
+                    pageout(currentProc, oldestPage);
+                    timestamps[currentProc][desiredPage] = tick;
+
+                    /* advance time for next pageit iteration */
+                    tick++;
+                }
+            }
+        }
+    }
+}
