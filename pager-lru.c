@@ -31,6 +31,14 @@ void pageit(Pentry q[MAXPROCESSES]) {
     /* Local vars */
     int proctmp;
     int pagetmp;
+    int currentProc;
+    int desiredPage;
+    long pc;
+
+    // used to determine the oldest page out of all of the processes
+    int oldestPage;
+    int oldestTime;
+    int currentTime;
 
     /* initialize static vars on first run */
     if (!initialized) {
