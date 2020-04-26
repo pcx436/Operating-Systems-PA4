@@ -13,13 +13,13 @@
  *      implmentation.
  */
 
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "simulator.h"
 
-void pageit(Pentry q[MAXPROCESSES]) { 
-    
+void pageit(Pentry q[MAXPROCESSES]) {
+
     /* This file contains the stub for an LRU pager */
     /* You may need to add/remove/modify any part of this file */
 
@@ -33,15 +33,15 @@ void pageit(Pentry q[MAXPROCESSES]) {
     int pagetmp;
 
     /* initialize static vars on first run */
-    if(!initialized){
-	for(proctmp=0; proctmp < MAXPROCESSES; proctmp++){
-	    for(pagetmp=0; pagetmp < MAXPROCPAGES; pagetmp++){
-		timestamps[proctmp][pagetmp] = 0; 
-	    }
-	}
-	initialized = 1;
+    if (!initialized) {
+        for (proctmp = 0; proctmp < MAXPROCESSES; proctmp++) {
+            for (pagetmp = 0; pagetmp < MAXPROCPAGES; pagetmp++) {
+                timestamps[proctmp][pagetmp] = 0;
+            }
+        }
+        initialized = 1;
     }
-    
+
     /* TODO: Implement LRU Paging */
     fprintf(stderr, "pager-lru not yet implemented. Exiting...\n");
     exit(EXIT_FAILURE);
