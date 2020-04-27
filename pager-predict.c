@@ -22,10 +22,7 @@ void pageit(Pentry q[MAXPROCESSES]) {
         initialized = 1;
     }
 
-    /* TODO: Implement Predictive Paging */
-    fprintf(stderr, "pager-predict not yet implemented. Exiting...\n");
-    exit(EXIT_FAILURE);
-
     /* advance time for next pageit iteration */
+    // TODO: Move this into the loop that I'll eventually have
     tick++;
 } 
